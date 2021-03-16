@@ -1,29 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class DATE
-{
-    int D, M, Y;
-
-    public:
-        void NHAP();
-        void XUAT();
-};
-
-void DATE::NHAP()
-{
-    cout << "Nhap Ngay: ";
-    cin >> D;
-    cout << "Nhap Thang: ";
-    cin >> M;
-    cout << "Nhap Nam: ";
-    cin >> Y;
-}
-
-void DATE::XUAT()
-{
-    cout << D << "/" << M << "/" << Y << endl;
-}
 class NHACUNGCAP
 {
     char MaNCC[10];
@@ -101,8 +78,7 @@ void HANG::XUAT()
 class PHIEU
 {
     char Maphieu[10];
-    DATE Ngaylap;
-
+    char Ngaylap[30];
     NHACUNGCAP Ncc1;
     HANG *MatHang;
     int n;
@@ -121,7 +97,8 @@ void PHIEU::NHAP()
     gets(Maphieu);
 
     cout << "Nhap Ngay Thanh Lap: " << endl;
-    Ngaylap.NHAP();
+    fflush(stdin);
+    gets(Ngaylap);
 
     Ncc1.NHAP();
 
@@ -140,8 +117,7 @@ void PHIEU::NHAP()
 void PHIEU::XUAT()
 {
     cout << setw(40) << "PHIEU NHAP VAN PHONG PHAM" << endl;
-    cout << "Ma Phieu: " << setw(10) << Maphieu;
-    cout << " Ngay Lap: " << setw(10); Ngaylap.XUAT();
+    cout << "Ma Phieu: " << setw(10) << Maphieu << " Ngay Lap: " << setw(10) << Ngaylap << endl;
     Ncc1.XUAT();
 
     cout << setw(10) << "MA SP" << setw(30) << "TEN SP" << setw(10) << "SO LUONG" << setw(10) << "DON GIA" << setw(10) << "THANH TIEN" << endl;
@@ -206,6 +182,7 @@ int main()
     PHIEU p1;
     p1.NHAP();
     p1.XUAT();
+    
     BONUS1(p1);
     BONUS2(p1);
     return 0;
