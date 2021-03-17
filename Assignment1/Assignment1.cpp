@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+class PHIEU;
+
 class NHACUNGCAP
 {
     char MaNCC[10];
@@ -49,8 +51,8 @@ class HANG
         void NHAP();
         void XUAT();
         friend class PHIEU;
-        friend int Xuly1(HANG *MatHang, int n);
-        friend void Xuly2(HANG *MatHang, int n);
+        friend void BONUS1(PHIEU p1);
+        friend void BONUS2(PHIEU p1);
 };
 
 void HANG::NHAP()
@@ -134,46 +136,38 @@ void PHIEU::XUAT()
     cout << setw(60) << "TONG TIEN: " << Tongtien << endl;
 }
 
-int Xuly1(HANG *MatHang, int n)
+//Cho biet co bao nhieu san pham co so luong nhap nho hon 80 trong phieu
+void BONUS1(PHIEU p1)
 {
     int count1 = 0;
 
-    for(int i = 0 ; i < n ; i++)
+    for(int i = 0 ; i < p1.n ; i++)
     {
-        if(MatHang[i].Soluong < 80)
+        if(p1.MatHang[i].Soluong < 80)
         {
             count1++;
         }
     }
 
-    return count1;
-}
-
-void Xuly2(HANG *MatHang, int n)
-{
-    for(int i = 0 ; i < n - 1 ; i++)
-    {
-        for(int j = 0 ; j < n - i - 1 ; j++)
-        {
-            if(MatHang[j].Dongia > MatHang[j + 1].Dongia)
-            {
-                HANG change = MatHang[j];
-                MatHang[j] = MatHang[j + 1];
-                MatHang[j + 1] = change;
-            }
-        }
-    }
-}
-//Cho biet co bao nhieu san pham co so luong nhap nho hon 80 trong phieu
-void BONUS1(PHIEU p1)
-{
-    cout << "So san pham co so luong nhap nho hon 80 trong phieu la: " << Xuly1(p1.MatHang, p1.n) << endl;
+    cout << "So san pham co so luong nhap nho hon 80 trong phieu la: " << count1 << endl;
 }
 
 //Sap xep danh sach cac san pham theo chieu tang dan cua don gia va in lai phieu
 void BONUS2(PHIEU p1)
 {
-    Xuly2(p1.MatHang, p1.n);
+    for(int i = 0 ; i < p1.n - 1 ; i++)
+    {
+        for(int j = 0 ; j < p1.n - i - 1 ; j++)
+        {
+            if(p1.MatHang[j].Dongia > p1.MatHang[j + 1].Dongia)
+            {
+                HANG change = p1.MatHang[j];
+                p1.MatHang[j] = p1.MatHang[j + 1];
+                p1.MatHang[j + 1] = change;
+            }
+        }
+    }
+
     p1.XUAT();
 }
 
