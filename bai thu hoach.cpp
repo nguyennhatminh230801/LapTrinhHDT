@@ -199,6 +199,13 @@ int main()
 
     SapXep(array1, n);
 
+    outfile << "Danh Sach Sau khi Sap Xep: " << endl;
+
+    for(int i = 0 ; i < n ; i++)
+    {
+        outfile << array1[i];
+    }
+
     outfile.close();
     
     outfile.open("HANGREMOVE.TXT", ios::app);
@@ -234,14 +241,12 @@ int main()
     cout << "Nhap vi tri chen: ";
     cin >> pos;
 
-    outfile << pos << endl;
-
     HANG obj1;
     cin >> obj1;
 
-    outfile << obj1 << endl;
-
     Chen(array1, n, pos, obj1);
+
+    outfile << "Danh Sach Can Tim " << endl;
 
     for(int i = 0 ; i < n ; i++)
     {
